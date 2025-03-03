@@ -4,6 +4,7 @@ import com.afarias.prueba_tecnica.dto.ErrorResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -50,5 +51,11 @@ public class GlobalExceptionHandler {
       MethodArgumentNotValidException ex) {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ErrorResponse(SOLICITUD_NO_VALIDA, HttpStatus.BAD_REQUEST.value()));
+  }
+
+  // Manejo de excepciones badCredentials en login
+  @ExceptionHandler(BadCredentialsException.class)
+  public ResponseEntity<Void> handleBadCredentialsException(BadCredentialsException ex) {
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
   }
 }
