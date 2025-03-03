@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: prueba-tecnica-afarias
+    container_name: prueba-tecnica-afarias
+    ports:
+      - "8080:8080"
