@@ -20,6 +20,11 @@ mvn spring-boot:run
 
 2. **Ejecutar con Docker**
 
+- Generar el  `.jar` de la aplicación
+```sh
+mvn clean package -DskipTests
+```
+
 - Tener instalado docker :  
 ```sh
 docker -version
@@ -34,6 +39,11 @@ docker run -p 8080:8080 prueba-tecnica-afarias
 ```
 
 3. **Ejecutar con docker-compose**
+
+- Generar el  `.jar` de la aplicación
+```sh
+mvn clean package -DskipTests
+```
 
 - Ejecutar: 
 ```sh
